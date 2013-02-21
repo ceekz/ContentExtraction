@@ -62,7 +62,6 @@ namespace ContentExtraction
             {
                 get { return textLength - linkTextLength; }
             }
-
             public double effectiveTextInformation
             {
                 get { return ((double)contentTextLength / textLength) * contentTextLength; }
@@ -189,7 +188,7 @@ namespace ContentExtraction
                     continue;
                 }
                 // This appears only on the author's source code. (not on the paper)
-                //if (DictionaryNodeProperty[e].textLength <= 50 || DictionaryNodeProperty[e].width < 200)
+                //if (_NodeProperty[e].textLength <= 50 || _NodeProperty[e].width < 200)
                 //{
                 //    continue;
                 //}
@@ -209,7 +208,7 @@ namespace ContentExtraction
                     candidateNode = e;
                 }
                 // This appears only on the author's source code. (not on the paper)
-                //else if (DictionaryNodeProperty[candidateNode].contentTextLength < 100 && DictionaryNodeProperty[e].contentTextLength > DictionaryNodeProperty[candidateNode].contentTextLength)
+                //else if (_NodeProperty[candidateNode].contentTextLength < 100 && _NodeProperty[e].contentTextLength > _NodeProperty[candidateNode].contentTextLength)
                 //{
                 //    candidateNode = e;
                 //}
