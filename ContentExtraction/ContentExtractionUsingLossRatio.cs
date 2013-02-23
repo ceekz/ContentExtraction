@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -18,24 +17,28 @@ namespace ContentExtraction
         [STAThread]
         static void _Main(string[] args)
         {
-            string urlString = "http://googlewebmastercentral.blogspot.jp/2012/12/webmaster-tools-verification-strategies.html";
-
-            // Content Extraction
-            ContentExtractionUsingLossRatio ce = new ContentExtractionUsingLossRatio(urlString);
-
-            // View Content HTML
-            Console.WriteLine(ce.Content.OuterHtml);
-
-            // View Post HTML
-            foreach (HtmlElement e in ce.Post)
+            foreach (string urlString in args)
             {
-                Console.WriteLine(e.OuterHtml);
-            }
+                // Content Extraction
+                ContentExtractionUsingLossRatio ce = new ContentExtractionUsingLossRatio(urlString);
 
-            // View Cmmment HTML
-            foreach (HtmlElement e in ce.Comment)
-            {
-                Console.WriteLine(e.OuterHtml);
+                // View Content HTML
+                foreach (HtmlElement e in ce.Content)
+                {
+                    Console.WriteLine(e.OuterHtml);
+                }
+
+                // View Post HTML
+                foreach (HtmlElement e in ce.Post)
+                {
+                    Console.WriteLine(e.OuterHtml);
+                }
+
+                // View Cmmment HTML
+                foreach (HtmlElement e in ce.Comment)
+                {
+                    Console.WriteLine(e.OuterHtml);
+                }
             }
         }
         */
@@ -102,9 +105,9 @@ namespace ContentExtraction
         {
             get { return _Node; }
         }
-        public HtmlElement Content
+        public List<HtmlElement> Content
         {
-            get { return _ContentNode; }
+            get { return new List<HtmlElement>() { _ContentNode }; }
         }
         public List<HtmlElement> Post
         {
@@ -314,51 +317,6 @@ namespace ContentExtraction
             }
 
             return informationQuantity;
-        }
-    }
-
-    public class NonDispBrowser : WebBrowser
-    {
-        // Reference:
-        //   http://www.atmarkit.co.jp/fdotnet/dotnettips/687nondispbrowser/nondispbrowser.html
-
-        bool done;
-        TimeSpan timeout = new TimeSpan(0, 0, 10);
-
-        protected override void OnDocumentCompleted(WebBrowserDocumentCompletedEventArgs e)
-        {
-            if (e.Url == this.Url)
-            {
-                done = true;
-            }
-        }
-
-        protected override void OnNewWindow(CancelEventArgs e)
-        {
-            e.Cancel = true;
-        }
-
-        public NonDispBrowser()
-        {
-            this.ScriptErrorsSuppressed = true;
-        }
-
-        public bool NavigateAndWait(string url)
-        {
-            base.Navigate(url);
-
-            done = false;
-            DateTime start = DateTime.Now;
-
-            while (done == false)
-            {
-                if (DateTime.Now - start > timeout)
-                {
-                    return false;
-                }
-                Application.DoEvents();
-            }
-            return true;
         }
     }
 }

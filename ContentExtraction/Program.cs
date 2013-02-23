@@ -30,7 +30,10 @@ namespace ContentExtraction
                 // Save Content, Post and Cmmment HTML
                 //using (StreamWriter sw = new StreamWriter(resultDirectory + "/content.html"))
                 //{
-                //    sw.WriteLine(ce.Content.OuterHtml);
+                //    foreach (HtmlElement e in ce.Content)
+                //    {
+                //        sw.WriteLine(e.OuterHtml);
+                //    }
                 //}
                 //using (StreamWriter sw = new StreamWriter(resultDirectory + "/post.html"))
                 //{
@@ -87,7 +90,7 @@ namespace ContentExtraction
             return line;
         }
 
-        static void AnnotateNode(HtmlElement Node, List<Tuple<HtmlElement, double>> LossRatio, HtmlElement Content, List<HtmlElement> Post, List<HtmlElement> Comment)
+        static void AnnotateNode(HtmlElement Node, List<Tuple<HtmlElement, double>> LossRatio, List<HtmlElement> Content, List<HtmlElement> Post, List<HtmlElement> Comment)
         {
             Dictionary<HtmlElement, Tuple<int, double>> dicLossRatio = new Dictionary<HtmlElement, Tuple<int, double>>();
             foreach (Tuple<HtmlElement, double> lossRatio in LossRatio)
@@ -102,7 +105,7 @@ namespace ContentExtraction
                     e.Style = "border: 1px solid red;";
                     e.SetAttribute("title", string.Format("{0}: {1} (avg: {2})", dicLossRatio[e].Item1, dicLossRatio[e].Item2, LossRatio.Select(n => n.Item2).Average()));
                 }
-                if (Content.Equals(e))
+                if (Content.Contains(e))
                 {
                     e.Style = "background-color:#faa;";
                 }
