@@ -45,7 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContentExtractionUsingLossRatio.cs">
+    <Compile Include="ContentExtractionUsingLossRatio.cs" />
+    <Compile Include="NonDispBrowser.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Program.cs" />
