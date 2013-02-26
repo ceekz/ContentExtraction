@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommentExtractionUsingTagPattern.cs" />
     <Compile Include="ContentExtractionUsingLossRatio.cs" />
     <Compile Include="NonDispBrowser.cs">
       <SubType>Component</SubType>
