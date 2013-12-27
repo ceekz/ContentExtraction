@@ -2,7 +2,11 @@
 
 Extract the main content from a html document.
 
-This package was implemented for comparison experiments of my paper (submitted).
+This package was implemented for comparison experiments of my paper.
+
+> Mitsuo Yoshida, Takashi Inui, Mikio Yamamoto.
+> [Automatic Extraction of Blog Posts and Comments from Blog Pages](http://id.nii.ac.jp/1001/00096746/).
+> IPSJ Journal (in Japanese), vol.54, no.12, pp.2502-2512, 2013.
 
 ## Class
 
