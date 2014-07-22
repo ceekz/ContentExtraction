@@ -2,7 +2,7 @@
 
 Extract the main content from a html document.
 
-This package was implemented for comparison experiments of my paper.
+This package was implemented for comparison experiments of our paper.
 
 > Mitsuo Yoshida, Takashi Inui, Mikio Yamamoto.
 > [Automatic Extraction of Blog Posts and Comments from Blog Pages](http://id.nii.ac.jp/1001/00096746/).
@@ -41,3 +41,10 @@ Additionally we used the following tools for comparison experiments.
 > [Extracting Informative Textual Parts from Web Pages Containing User-Generated Content](http://dx.doi.org/10.1145/2362456.2362462).
 > Proceedings of the 12th International Conference on Knowledge Management and Knowledge Technologies (i-KNOW '12), 2012.
 
+### [ExtractUniqueBlock](http://www.mibel.cs.tsukuba.ac.jp/~ceekz/ExtractUniqueBlock/)
+
+This is a previous method of the authors. Our paper proposes the method that expanded this method.
+
+> Mitsuo Yoshida, Mikio Yamamoto.
+> [Primary Content Extraction from News Pages without Training Data](http://dbsj.org/journal/dbsj_journal/dbsj_journal_vol_8_no_1_29_34/).
+> DBSJ Journal (in Japanese). vol.8, no.1, pp.29-34, 2009.
