@@ -11,60 +11,64 @@ namespace ContentExtraction
         [STAThread]
         static void Main(string[] args)
         {
-            //string[] experimentFiles = Directory.GetFiles("C:/Users/ceekz/Desktop/file", "*.html_marked.html");
-            string[] experimentFiles = { "http://googlewebmastercentral.blogspot.jp/2012/12/webmaster-tools-verification-strategies.html" };
-            string resultDirectory = "C:/Users/ceekz/Desktop";
+            string[] experimentFiles = Directory.GetFiles("C:/Users/ceekz/Dropbox/論文/Submit-IPSJ-JOURNAL/tool-for-cao/file", "*.html_marked.html");
+            //string[] experimentFiles = { "http://www.huffingtonpost.jp/takeshi-fujimaki/post_5295_b_3668544.html" };
+            string resultDirectory = "C:/Users/ceekz/Desktop/result/";
 
             foreach (string file in experimentFiles)
             {
-                //if (File.Exists(resultDirectory + Path.GetFileName(file)))
-                //{
-                //    continue;
-                //}
+                if (File.Exists(resultDirectory + Path.GetFileName(file)))
+                {
+                    continue;
+                }
 
                 Console.WriteLine(DateTime.Now + " " + file);
 
                 // Content Extraction
-                ContentExtractionUsingLossRatio ce = new ContentExtractionUsingLossRatio(file);
+                //ContentExtractionUsingLossRatio ce = new ContentExtractionUsingLossRatio(file);
+                ContentExtractionUsingMiBAT ce = new ContentExtractionUsingMiBAT(file);
 
                 // Save Content, Post and Cmmment HTML
-                //using (StreamWriter sw = new StreamWriter(resultDirectory + "/content.html"))
+                //using (StreamWriter sw = new StreamWriter(resultDirectory + "content.html"))
                 //{
                 //    foreach (HtmlElement e in ce.Content)
                 //    {
                 //        sw.WriteLine(e.OuterHtml);
                 //    }
                 //}
-                //using (StreamWriter sw = new StreamWriter(resultDirectory + "/post.html"))
+                //using (StreamWriter sw = new StreamWriter(resultDirectory + "post.html"))
                 //{
                 //    foreach (HtmlElement e in ce.Post)
                 //    {
                 //        sw.WriteLine(e.OuterHtml);
                 //    }
                 //}
-                //using (StreamWriter sw = new StreamWriter(resultDirectory + "/comment.html"))
-                //{
-                //    foreach (HtmlElement e in ce.Comment)
-                //    {
-                //        sw.WriteLine(e.OuterHtml);
-                //    }
-                //}
+                using (StreamWriter sw = new StreamWriter(resultDirectory + Path.GetFileName(file)))
+                //using (StreamWriter sw = new StreamWriter(resultDirectory + "comment.html"))
+                {
+                    foreach (HtmlElement e in ce.Comment)
+                    {
+                        sw.WriteLine(e.OuterHtml);
+                    }
+                }
 
                 // Save log and annotated html for Experiment
-                using (StreamWriter sw = new StreamWriter(resultDirectory + "/result.txt", true))
+                using (StreamWriter sw = new StreamWriter(resultDirectory + "comparison-method.txt", true))
                 {
                     sw.WriteLine(file);
-                    sw.WriteLine(OutputLine("post", ce.Post));
+                    //sw.WriteLine(OutputLine("post", ce.Post));
                     sw.WriteLine(OutputLine("comment", ce.Comment));
                 }
-                using (StreamWriter sw = new StreamWriter(resultDirectory + "/" + Path.GetFileName(file)))
-                {
-                    AnnotateNode(ce.Node, ce.LossRatio, ce.Content, ce.Post, ce.Comment);
+                //using (StreamWriter sw = new StreamWriter(resultDirectory + Path.GetFileName(file)))
+                //{
+                //    AnnotateNode(ce.Node, ce.LossRatio, ce.Content, ce.Post, ce.Comment);
 
-                    sw.WriteLine(ce.Node.OuterHtml);
-                }
+                //    sw.WriteLine(ce.Node.OuterHtml);
+                //}
 
-                Console.WriteLine(string.Format("  Post:{0} Comment:{1}", ce.Post.Count, ce.Comment.Count));
+                //Console.WriteLine(string.Format("  Post:{0} Comment:{1}", ce.Post.Count, ce.Comment.Count));
+
+                //Console.ReadLine();
             }
         }
 
