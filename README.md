@@ -18,6 +18,14 @@ This class provides an implementation of an algorithm described in the following
 > [Blog post and comment extraction using information quantity of web format](http://dx.doi.org/10.1007/978-3-540-68636-1_29).
 > In Information Retrieval Technology: 4th Asia Information Retrieval Symposium, pp.298-309, 2008.
 
+### ContentExtractionUsingMiBAT
+
+This class provides an implementation of an algorithm described in the following paper.
+
+> Xinying Song, Jing Liu, Yunbo Cao, Chin-Yew Lin, Hsiao-Wuen Hon.
+> [Automatic extraction of web data records containing user-generated content](http://doi.acm.org/10.1145/1871437.1871447).
+> In Proceedings of the 19th ACM international conference on Information and knowledge management, pp.39–48, 2010.
+
 ## License
 
 This package is licensed under the terms of the MIT license.
