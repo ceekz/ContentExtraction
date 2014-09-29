@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="CommentExtractionUsingTagPattern.cs" />
     <Compile Include="ContentExtractionUsingLossRatio.cs" />
+    <Compile Include="ContentExtractionUsingMiBAT.cs" />
     <Compile Include="NonDispBrowser.cs">
       <SubType>Component</SubType>
     </Compile>
