@@ -1,6 +1,6 @@
 # ContentExtraction
 
-Extract the main content from a html document.
+Extract the main content from html documents.
 
 This package was implemented for comparison experiments of our paper.
 
